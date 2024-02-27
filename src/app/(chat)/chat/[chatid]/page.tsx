@@ -1,5 +1,10 @@
+import Header from "@/components/module/chatpage/Header";
+import Infobar from "@/components/module/chatpage/Infobar";
+import Message from "@/components/module/chatpage/Message";
+
 const MainContent = ({ params }: { params: { chatid: string } }) => {
   const chatid = params.chatid;
+
   if (chatid === "") {
     return (
       <div>
@@ -9,7 +14,9 @@ const MainContent = ({ params }: { params: { chatid: string } }) => {
   }
   return (
     <div>
-      <h1>Chat: {params.chatid}</h1>
+      <Header />
+      <Message />
+      <Infobar />
     </div>
   );
 };

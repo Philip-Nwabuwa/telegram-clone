@@ -17,8 +17,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "../ui/input";
-import DarkmodeSwitch from "../common/DarkmodeSwitch";
+import { Input } from "../../ui/input";
+import DarkmodeSwitch from "../../common/DarkmodeSwitch";
 import Link from "next/link";
 
 const Topbar = () => {

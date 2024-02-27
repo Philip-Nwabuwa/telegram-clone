@@ -1,5 +1,5 @@
-import Topbar from "../sidebar/Topbar";
-import SidebarList from "../sidebar/SidebarList";
+import Topbar from "./sidebar/Topbar";
+import SidebarList from "./sidebar/SidebarList";
 
 const Sidebar = () => {
   const chats = [
