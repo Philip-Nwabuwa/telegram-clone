@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "../ui/input";
 import DarkmodeSwitch from "../common/DarkmodeSwitch";
+import Link from "next/link";
 
 const Topbar = () => {
   return (
@@ -53,9 +54,11 @@ const Topbar = () => {
             <HelpCircle /> Feature
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem className="flex items-center gap-2 text-red-500">
-            <LogOut /> Log out
-          </DropdownMenuItem>
+          <Link href="/login">
+            <DropdownMenuItem className="flex items-center gap-2 text-red-500">
+              <LogOut /> Log out
+            </DropdownMenuItem>
+          </Link>
         </DropdownMenuContent>
       </DropdownMenu>
       <Input
