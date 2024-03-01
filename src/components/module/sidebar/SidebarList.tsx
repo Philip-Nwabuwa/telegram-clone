@@ -7,25 +7,13 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../../ui/button";
 import { Icons } from "../../common/Icons";
+import { ChatProps } from "@/types/chat";
 
-interface ChatProps {
-  chats: {
-    id: string;
-    name: string;
-    avatar: string;
-    time: string;
-    message: string;
-    unread: number;
-    avatarUrl: string;
-  }[];
-}
-
-interface ContactProps {
+export interface ContactProps {
   contacts: {
     id: string;
     name: string;
@@ -57,22 +45,39 @@ const SidebarList = ({ chats, contacts }: SidebarProps) => {
     <div className="relative">
       <ScrollArea className="w-full scrollView pr-4">
         {chats.map((chat) => {
-          const { id, name, avatarUrl, avatar, time, unread, message } = chat;
+          const {
+            id,
+            name,
+            avatarUrl,
+            avatar,
+            time,
+            lastSeen,
+            unread,
+            messages,
+          } = chat;
 
           return (
             <Link key={id} href={`/chat/${id}`}>
               <div className="w-full flex items-center gap-3 p-2 rounded-2xl hover:bg-black/70">
-                <Avatar className="h-[54px] w-[54px]">
-                  <AvatarImage src={avatarUrl} alt="@shadcn" />
-                  <AvatarFallback>{avatar}</AvatarFallback>
-                </Avatar>
+                <div className="relative">
+                  <Avatar className="h-[54px] w-[54px]">
+                    <AvatarImage src={avatarUrl} alt="@shadcn" />
+                    <AvatarFallback>{avatar}</AvatarFallback>
+                  </Avatar>
+                  {lastSeen === "Online" && (
+                    <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-red-500 rounded-full"></div>
+                  )}
+                </div>
+
                 <div className="w-full flex flex-col gap-1">
                   <div className="flex items-center justify-between">
                     <h2 className="text-[16px]">{name}</h2>
                     <p className="text-[12px] text-[#aaaaaa]">{time}</p>
                   </div>
                   <div className="flex items-center justify-between">
-                    <p className="text-[12px] text-[#aaaaaa]">{message}</p>
+                    <p className="truncate max-w-[200px] whitespace-nowrap text-ellipsis text-[12px] text-[#aaaaaa]">
+                      {messages.at(-1)}
+                    </p>
                     {unread > 0 && (
                       <p className="text-[12px] px-[6px] bg-red-500 rounded-full">
                         {unread}

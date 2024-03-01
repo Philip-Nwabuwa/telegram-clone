@@ -9,7 +9,7 @@ const Infobar = () => {
     return null;
   }
 
-  return <div>Infobar</div>;
+  return <div className="w-[300px] h-screen bg-gray-950">Infobar</div>;
 };
 
 export default Infobar;
